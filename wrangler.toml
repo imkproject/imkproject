@@ -1,0 +1,8 @@
+name = "imkproject"
+compatibility_date = "2026-11-21"
+pages_build_output_dir = "./public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "imkproject-db"
+database_id = "6e01c6f2-1087-4f40-8b63-8eb76773948b"
