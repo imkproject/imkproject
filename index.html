@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="ImkProject — новая эра GoreBox 27. Присоединяйся к игровому сообществу!">
+  <title>ImkProject — Новая эра GoreBox 27</title>
+  <style>
+    :root{--red:#f21d2b;--red2:#a90816;--bg:#080808;--panel:#141414;--muted:#a7a7a7;--white:#f5f5f5}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:10;background:#090909df;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff12}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:25px;font-weight:900;font-style:italic;letter-spacing:-1.5px}.brand span{color:var(--red)}
+    .links{display:flex;gap:28px;color:#c8c8c8;font-size:14px}.links a:hover{color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:8px;background:var(--red);font-weight:800;color:white;box-shadow:0 8px 30px #f21d2b30;transition:.2s}
+    .btn:hover{transform:translateY(-2px);background:#ff3441}
+    .hero{position:relative;overflow:hidden;padding:112px 0 105px;background:radial-gradient(ellipse at 78% 45%,#7b07134a,transparent 38%),linear-gradient(120deg,#090909 45%,#170609)}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 48%,#f21d2b0d 48.2%,transparent 65%),repeating-linear-gradient(135deg,transparent 0 90px,#ffffff06 91px 92px);pointer-events:none}
+    .hero-inner{position:relative;max-width:760px}.eyebrow{display:inline-block;color:#ff6570;border:1px solid #f21d2b66;background:#f21d2b12;border-radius:99px;padding:6px 12px;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+    h1{font-size:clamp(48px,8vw,88px);line-height:.98;letter-spacing:-4px;margin:24px 0 22px;font-weight:950}
+    h1 span{color:var(--red);text-shadow:0 0 36px #f21d2b55}
+    .lead{font-size:19px;color:#c4c4c4;max-width:620px;margin:0 0 32px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn.secondary{background:transparent;border:1px solid #ffffff35;box-shadow:none}.btn.secondary:hover{border-color:var(--red);background:#f21d2b12}
+    .section{padding:82px 0}.section.alt{background:#101010;border-top:1px solid #ffffff0c;border-bottom:1px solid #ffffff0c}
+    .kicker{color:var(--red);font-size:12px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase}
+    h2{font-size:clamp(32px,5vw,48px);line-height:1.08;letter-spacing:-1.8px;margin:10px 0 18px}
+    .intro{color:var(--muted);max-width:700px;font-size:17px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+    .card{background:linear-gradient(145deg,#191919,#101010);border:1px solid #ffffff12;border-radius:14px;padding:26px;min-height:190px}
+    .icon{width:42px;height:42px;border-radius:11px;background:#f21d2b1c;color:#ff4551;display:grid;place-items:center;font-size:21px;margin-bottom:18px}
+    .card h3{margin:0 0 8px;font-size:19px}.card p{margin:0;color:var(--muted);font-size:14px}
+    .manifesto{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .quote{font-size:clamp(25px,3vw,36px);font-weight:850;line-height:1.2;border-left:4px solid var(--red);padding-left:24px}
+    .quote span{color:var(--red)}
+    .points{display:grid;gap:14px}.point{display:flex;gap:14px;align-items:flex-start;color:#c5c5c5}.point b{color:white}
+    .dot{flex:none;width:9px;height:9px;border-radius:50%;background:var(--red);margin-top:9px;box-shadow:0 0 14px #f21d2b}
+    .join{padding:70px 30px;text-align:center;border:1px solid #f21d2b55;border-radius:18px;background:radial-gradient(ellipse at center,#5e091433,transparent 65%),#121212}
+    .join p{color:var(--muted);max-width:580px;margin:0 auto 26px}
+    footer{padding:28px 0;color:#777;font-size:13px;border-top:1px solid #ffffff12}
+    .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:760px){.links{display:none}.hero{padding:82px 0}.grid{grid-template-columns:1fr}.manifesto{grid-template-columns:1fr;gap:28px}.section{padding:62px 0}h1{letter-spacing:-2.5px}.lead{font-size:17px}}
+  </style>
+
+<style>
+.account-area{display:flex;gap:8px;align-items:center}.auth-btn{background:#f21d2b;color:#fff;border:0;border-radius:8px;padding:11px 17px;font-weight:800;cursor:pointer}
+.auth-modal{display:none;position:fixed;inset:0;z-index:999;background:#000d;align-items:center;justify-content:center;padding:18px}.auth-modal.open{display:flex}
+.auth-box{width:min(430px,100%);background:#151515;border:1px solid #444;border-radius:15px;padding:25px;position:relative;color:#fff}
+.auth-box input{display:block;width:100%;box-sizing:border-box;margin:7px 0 14px;padding:12px;background:#080808;color:#fff;border:1px solid #444;border-radius:7px}
+.auth-box label{font-size:13px;color:#ccc}.auth-box .close{position:absolute;right:14px;top:9px;background:none;color:#aaa;border:0;font-size:25px;cursor:pointer}
+.auth-tabs{display:flex;gap:8px;margin:15px 0}.auth-tabs button{flex:1;padding:10px;background:#282828;border:1px solid #444;color:#fff;border-radius:7px;cursor:pointer}.auth-tabs button.active{border-color:#f21d2b;background:#3a1014}
+.auth-status{min-height:22px;color:#ff737b;font-size:13px}.auth-status.ok{color:#8de0a0}
+</style>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">Imk<span>Project</span></a>
+    <nav class="links"><a href="#about">О проекте</a><a href="#values">Наш подход</a><a href="#community">Сообщество</a></nav>
+<div class="account-area" id="accountArea"><button class="auth-btn" id="openAuth">Войти</button></div>
+    <a class="btn" href="#community">Присоединиться</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">GoreBox 27 · ImkProject</div>
+      <h1>НОВАЯ ЭРА<br><span>НАЧИНАЕТСЯ</span></h1>
+      <p class="lead">Добро пожаловать в ImkProject — пространство для тех, кто хочет по-новому взглянуть на GoreBox 27. Здесь всё начинается с тебя, твоих идей и людей рядом.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#community">Стать частью проекта</a>
+        <a class="btn secondary" href="#about">Узнать о проекте</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="kicker">Кто мы такие</div>
+      <h2>Это больше, чем просто игра</h2>
+      <p class="intro">ImkProject — игровое сообщество вокруг GoreBox 27. Мы хотим создать место, куда приятно возвращаться: знакомиться, общаться, делиться моментами и вместе создавать собственную историю.</p>
+      <div class="grid">
+        <article class="card"><div class="icon">⚡</div><h3>Игровая атмосфера</h3><p>Свобода действий, яркие моменты и впечатления, которыми хочется делиться.</p></article>
+        <article class="card"><div class="icon">👥</div><h3>Люди и общение</h3><p>Здесь важны не только игровые события, но и дружелюбное сообщество.</p></article>
+        <article class="card"><div class="icon">🚀</div><h3>Развитие проекта</h3><p>ImkProject — это движение вперёд, новые идеи и возможность стать частью общего дела.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="values">
+    <div class="wrap manifesto">
+      <div>
+        <div class="kicker">Наш принцип</div>
+        <div class="quote">«Создаём не просто проект. Создаём <span>свою атмосферу</span>».</div>
+      </div>
+      <div class="points">
+        <div class="point"><span class="dot"></span><div><b>Уважение.</b> Относимся друг к другу достойно и поддерживаем комфортное общение.</div></div>
+        <div class="point"><span class="dot"></span><div><b>Активность.</b> Предлагай идеи, участвуй в жизни сообщества и делись своими моментами.</div></div>
+        <div class="point"><span class="dot"></span><div><b>Командный дух.</b> Чем больше нас, тем больше возможностей сделать проект интереснее.</div></div>
+        <div class="point"><span class="dot"></span><div><b>Открытость.</b> Мы рады новым участникам и конструктивным предложениям.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="community">
+    <div class="wrap">
+      <div class="join">
+        <div class="kicker">Твой ход</div>
+        <h2>Врывайся в новую эру!</h2>
+        <p>Присоединяйся к ImkProject, знакомься с участниками и приглашай друзей. Большое сообщество начинается с каждого из нас.</p>
+        <a class="btn" href="https://t.me/">Открыть Telegram</a>
+      </div>
+    </div>
+  </section>
+
+<section class="section" id="social"><div class="wrap">
+  <div class="kicker">Будь на связи</div><h2>Социальные сети</h2>
+  <p class="intro">Присоединяйся к нашим площадкам, следи за обновлениями и общайся с участниками проекта.</p>
+  <div class="grid">
+    <article class="card"><div class="icon">💬</div><h3>Discord</h3><p>Наш Discord-сервер</p><p><a href="https://discord.gg/m7Ex6R6Hqa" target="_blank" rel="noopener noreferrer">Присоединиться ↗</a></p></article>
+    <article class="card"><div class="icon">✈️</div><h3>Telegram</h3><p>Канал ImkProject</p><p><a href="https://t.me/imkproject" target="_blank" rel="noopener noreferrer">Открыть канал ↗</a></p></article>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap foot"><div class="brand">Imk<span>Project</span></div><div>GoreBox 27 · Новая эра начинается здесь</div><div>© 2026 ImkProject</div></div></footer>
+
+<div class="auth-modal" id="authModal"><div class="auth-box">
+<button class="close" id="closeAuth">×</button><h2>Личный кабинет</h2>
+<div class="auth-tabs"><button type="button" class="active" data-mode="login">Вход</button><button type="button" data-mode="register">Регистрация</button></div>
+<form id="authForm">
+<div id="regFields" hidden><label>Имя пользователя</label><input id="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]+" placeholder="Логин"><label>Электронная почта</label><input id="email" type="email" maxlength="254" placeholder="name@example.com"></div>
+<div id="identityField"><label>Логин или электронная почта</label><input id="identity" maxlength="254" required placeholder="Логин или почта"></div>
+<label>Пароль</label><input id="password" type="password" minlength="8" maxlength="128" required autocomplete="current-password">
+<div id="confirmField" hidden><label>Повторите пароль</label><input id="confirmPassword" type="password" minlength="8" maxlength="128"></div>
+<div class="cf-turnstile" data-sitekey="REPLACE_WITH_TURNSTILE_SITE_KEY" data-theme="dark"></div>
+<p style="font-size:12px;color:#aaa">Защита Cloudflare Turnstile.</p><div class="auth-status" id="authStatus"></div>
+<button class="auth-btn" id="submitAuth" type="submit">Войти</button>
+</form></div></div>
+<script>
+(()=> {
+let mode='login', user=null;
+const $=id=>document.getElementById(id), modal=$('authModal'), form=$('authForm');
+function showMode(m){mode=m;document.querySelectorAll('.auth-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));
+$('regFields').hidden=m!=='register';$('confirmField').hidden=m!=='register';$('identityField').hidden=m==='register';
+$('submitAuth').textContent=m==='register'?'Создать аккаунт':'Войти';$('authStatus').textContent='';if(window.turnstile)try{turnstile.reset()}catch(e){}}
+document.querySelectorAll('.auth-tabs button').forEach(b=>b.onclick=()=>showMode(b.dataset.mode));
+$('openAuth').onclick=()=>{modal.classList.add('open');showMode('login')};$('closeAuth').onclick=()=>modal.classList.remove('open');
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+function render(){let a=$('accountArea');a.replaceChildren();if(user){let s=document.createElement('span');s.textContent=user.username+' ';let b=document.createElement('button');b.className='auth-btn';b.textContent='Выйти';b.onclick=async()=>{await fetch('/api/logout',{method:'POST'});user=null;render()};a.append(s,b)}else{let b=document.createElement('button');b.className='auth-btn';b.textContent='Войти';b.onclick=()=>{modal.classList.add('open');showMode('login')};a.append(b)}}
+async function me(){try{let r=await fetch('/api/me');let d=await r.json();user=d.user;render()}catch(e){}}
+form.onsubmit=async e=>{e.preventDefault();$('submitAuth').disabled=true;$('authStatus').textContent='Проверка…';
+let p={password:$('password').value,captcha:document.querySelector('[name="cf-turnstile-response"]')?.value||''};
+if(mode==='register'){p.username=$('username').value.trim();p.email=$('email').value.trim();if($('password').value!==$('confirmPassword').value){$('authStatus').textContent='Пароли не совпадают.';$('submitAuth').disabled=false;return}}
+else p.identity=$('identity').value.trim();
+try{let r=await fetch('/api/'+mode,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});let d=await r.json();if(!r.ok)throw Error(d.error||'Ошибка');user=d.user;render();modal.classList.remove('open');form.reset();if(window.turnstile)turnstile.reset()}catch(err){$('authStatus').textContent=err.message;if(window.turnstile)turnstile.reset()}finally{$('submitAuth').disabled=false}};
+me();
+})();
+</script>
+
+</body>
+</html>
